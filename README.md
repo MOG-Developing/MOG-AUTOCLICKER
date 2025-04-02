@@ -5,7 +5,7 @@ Made by @misterofgames_yt! This autoclicker is very fast. the cps can go from 1 
 # TUTORIAL HOW TO RUN:
 Requirements: python 3.11 or higher (made in python 3.11 so recommended.)
 
-If it still doesn't run you should open CMD (or command promt) and copy paste this " pip install keyboard mouse pyautogui tk ttkthemes pywin32 threading time messagebox ttk tkinter ".
+If it still doesn't run you should open CMD (or command promt) and copy paste this ```pip install keyboard mouse pyautogui tk ttkthemes pywin32 threading time messagebox ttk tkinter```.
 This command installs all of the things needed for the autoclicker!
 
 **__If you download or use this software, you automatically agree to the [LICENSE](https://github.com/MOG-Developing/MOG-AUTOCLICKER/blob/main/LICENSE).__**
