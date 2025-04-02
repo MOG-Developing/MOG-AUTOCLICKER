@@ -11,9 +11,11 @@ This command installs all of the things needed for the autoclicker!
 - **_If you download or use this software, you automatically agree to the_ [LICENSE](https://github.com/MOG-Developing/MOG-AUTOCLICKER/blob/main/LICENSE)**
 
 
+# V1
 
 ![image](https://github.com/user-attachments/assets/d6ebe9e8-3fc2-442e-8e03-0e2e653762d7)  ![image](https://github.com/user-attachments/assets/c5690334-f6a4-4349-8e6a-29b452b0787a)
 
+# Library install
 ![Be pavadinimo](https://github.com/user-attachments/assets/fba2ea83-6756-443d-b9e9-7fe281f90f2c)
 
 
