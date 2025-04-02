@@ -17,7 +17,6 @@ def is_admin():
         return False
 
 if not is_admin():
-    # Re-run the program with admin rights
     ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
     sys.exit()
 
@@ -28,7 +27,6 @@ class AutoClickerV3:
         self.root.geometry("450x600")
         self.root.resizable(False, False)
         
-        # Modern color scheme
         self.colors = {
             'bg': '#2e2e2e',
             'accent': '#4a76a8',
@@ -43,10 +41,8 @@ class AutoClickerV3:
             'info': '#5bc0de'
         }
         
-        # Configure root window
         self.root.configure(bg=self.colors['bg'])
         
-        # Variables
         self.clicking = False
         self.click_thread = None
         self.click_mode = tk.StringVar(value='cps')
@@ -57,11 +53,9 @@ class AutoClickerV3:
         self.randomization = tk.DoubleVar(value=0.0)
         self.hotkey_listener = None
         
-        # Animation variables
         self.animation_angle = 0
         self.animation_running = False
         
-        # Load settings
         self.settings_file = "autoclicker_settings_v3.json"
         self.load_settings()
         
@@ -98,11 +92,9 @@ class AutoClickerV3:
             print(f"Error saving settings: {e}")
 
     def setup_ui(self):
-        # Custom style
         style = ttk.Style()
         style.theme_use('clam')
         
-        # Configure styles with simple font specifications
         style.configure('.', font=('Arial', 9))
         style.configure('TFrame', background=self.colors['bg'])
         style.configure('TLabel', background=self.colors['bg'], foreground=self.colors['text'])
@@ -126,20 +118,16 @@ class AutoClickerV3:
                        background=self.colors['bg'],
                        troughcolor=self.colors['secondary'])
         
-        # Main container
         main_frame = ttk.Frame(self.root, padding="15")
         main_frame.pack(fill=tk.BOTH, expand=True)
         
-        # Header with animation
         header_frame = ttk.Frame(main_frame)
         header_frame.pack(fill=tk.X, pady=(0, 15))
         
-        # Animated logo
         self.logo_canvas = tk.Canvas(header_frame, width=40, height=40, bg=self.colors['bg'], 
                                     highlightthickness=0)
         self.logo_canvas.pack(side=tk.LEFT)
         
-        # Title with simple font
         title_label = tk.Label(
             header_frame,
             text="MOG-AUTOCLICKER_V2",
@@ -149,7 +137,6 @@ class AutoClickerV3:
         )
         title_label.pack(side=tk.LEFT, padx=10)
         
-        # Mode selection
         mode_frame = ttk.LabelFrame(
             main_frame,
             text="Click Mode",
@@ -157,7 +144,6 @@ class AutoClickerV3:
         )
         mode_frame.pack(fill=tk.X, pady=5)
         
-        # Mode radio buttons
         for text, mode in [("Clicks Per Second (CPS)", 'cps'), ("Milliseconds (MS)", 'ms')]:
             rb = ttk.Radiobutton(
                 mode_frame,
@@ -167,7 +153,6 @@ class AutoClickerV3:
             )
             rb.pack(anchor=tk.W, pady=3)
         
-        # Click settings frame
         settings_frame = ttk.LabelFrame(
             main_frame,
             text="Click Settings",
@@ -175,7 +160,6 @@ class AutoClickerV3:
         )
         settings_frame.pack(fill=tk.X, pady=5)
         
-        # Click value entry
         value_frame = ttk.Frame(settings_frame)
         value_frame.pack(fill=tk.X, pady=5)
         
@@ -204,7 +188,6 @@ class AutoClickerV3:
         )
         apply_btn.pack(side=tk.LEFT, padx=5)
         
-        # Click value slider
         self.value_slider = ttk.Scale(
             settings_frame,
             from_=1,
@@ -214,7 +197,6 @@ class AutoClickerV3:
         )
         self.value_slider.pack(fill=tk.X, pady=5)
         
-        # Slider range labels
         slider_labels = ttk.Frame(settings_frame)
         slider_labels.pack(fill=tk.X)
         
@@ -228,7 +210,6 @@ class AutoClickerV3:
             text="100"
         ).pack(side=tk.RIGHT)
         
-        # Randomization
         random_frame = ttk.Frame(settings_frame)
         random_frame.pack(fill=tk.X, pady=5)
         
@@ -251,7 +232,6 @@ class AutoClickerV3:
             width=4
         ).pack(side=tk.LEFT)
         
-        # Mouse button selection
         button_frame = ttk.Frame(settings_frame)
         button_frame.pack(fill=tk.X, pady=5)
         
@@ -269,7 +249,6 @@ class AutoClickerV3:
             )
             rb.pack(side=tk.LEFT, padx=5)
         
-        # Hotkey settings
         hotkey_frame = ttk.LabelFrame(
             main_frame,
             text="Hotkey Settings",
@@ -317,12 +296,10 @@ class AutoClickerV3:
         )
         self.status_label.pack(side=tk.LEFT)
         
-        # Bind mode change to update display
         self.click_mode.trace_add('write', self.update_value_display)
         self.click_value.trace_add('write', self.update_value_display)
         self.randomization.trace_add('write', self.update_randomization_display)
         
-        # Update initial display
         self.update_value_display()
 
     def apply_custom_cps(self):
@@ -337,7 +314,7 @@ class AutoClickerV3:
                     if not messagebox.askyesno("High CPS Warning", 
                                              "Values above 1000 CPS may cause performance issues. Continue?"):
                         return
-            else:  # MS mode
+            else:
                 if value < 1:
                     if not messagebox.askyesno("Low MS Warning",
                                              "Values below 1ms may cause performance issues. Continue?"):
@@ -383,7 +360,6 @@ class AutoClickerV3:
         center_x, center_y = 20, 20
         radius = 15
         
-        # Draw gear
         self.logo_canvas.create_oval(
             center_x - radius, center_y - radius,
             center_x + radius, center_y + radius,
@@ -391,7 +367,6 @@ class AutoClickerV3:
             width=2
         )
         
-        # Draw gear teeth
         for i in range(8):
             angle = math.radians(i * 45 + self.animation_angle)
             outer_x = center_x + (radius + 5) * math.cos(angle)
@@ -409,14 +384,12 @@ class AutoClickerV3:
         self.root.after(50, self.animate)
 
     def change_hotkey(self):
-        # Temporarily disable the current hotkey
         if self.hotkey_listener is not None:
             try:
                 keyboard.remove_hotkey(self.hotkey_listener)
             except:
                 pass
         
-        # Ask for new hotkey
         new_hotkey = simpledialog.askstring(
             "Change Hotkey",
             "Press the new hotkey (e.g., F6, Ctrl+Shift+A):\n\nNote: Some special keys may not work properly.",
@@ -424,33 +397,25 @@ class AutoClickerV3:
         )
         
         if new_hotkey:
-            # Validate the hotkey
             try:
-                # Test if the hotkey can be registered
                 test_listener = keyboard.add_hotkey(new_hotkey, lambda: None)
                 keyboard.remove_hotkey(test_listener)
                 
-                # Set the new hotkey
                 self.hotkey.set(new_hotkey)
                 self.setup_keyboard_listener()
                 self.save_settings()
             except ValueError as e:
                 messagebox.showerror("Hotkey Error", f"Invalid hotkey: {e}\nPlease try a different key combination.")
-                # Restore previous hotkey
                 self.setup_keyboard_listener()
         else:
-            # Restore previous hotkey if user cancelled
             self.setup_keyboard_listener()
 
     def setup_keyboard_listener(self):
-        # Remove any existing hotkey
         if self.hotkey_listener is not None:
             try:
                 keyboard.remove_hotkey(self.hotkey_listener)
             except:
                 pass
-        
-        # Add new hotkey
         try:
             self.hotkey_listener = keyboard.add_hotkey(
                 self.hotkey.get(),
@@ -500,7 +465,6 @@ class AutoClickerV3:
                 mouse.click(button=self.click_button.get())
                 time.sleep(self.get_click_delay())
             except:
-                # If any error occurs, stop clicking
                 self.clicking = False
                 self.root.after(0, self.update_status_indicator)
                 self.root.after(0, lambda: self.status_label.config(text="Status: Error"))
@@ -517,12 +481,10 @@ class AutoClickerV3:
         # Save settings
         self.save_settings()
         
-        # Stop any clicking
         self.clicking = False
         if self.click_thread is not None:
             self.click_thread.join(timeout=0.1)
         
-        # Close the window
         self.root.destroy()
 
 def main():
@@ -531,7 +493,6 @@ def main():
         app = AutoClickerV3(root)
         root.protocol("WM_DELETE_WINDOW", app.on_closing)
         
-        # Center the window
         window_width = 450
         window_height = 600
         screen_width = root.winfo_screenwidth()
