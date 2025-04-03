@@ -275,7 +275,6 @@ class AutoClickerV3:
             command=self.change_hotkey
         ).pack(fill=tk.X)
         
-        # Status frame
         status_frame = ttk.Frame(main_frame)
         status_frame.pack(fill=tk.X, pady=10)
         
@@ -471,14 +470,12 @@ class AutoClickerV3:
                 break
 
     def on_closing(self):
-        # Clean up hotkey listener
         if self.hotkey_listener is not None:
             try:
                 keyboard.remove_hotkey(self.hotkey_listener)
             except:
                 pass
         
-        # Save settings
         self.save_settings()
         
         self.clicking = False
