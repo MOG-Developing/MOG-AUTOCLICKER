@@ -20,7 +20,7 @@ if not is_admin():
     ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
     sys.exit()
 
-class AutoClickerV3:
+class AutoClickerV2:
     def __init__(self, root):
         self.root = root
         self.root.title("MOG-AUTOCLICKER_V2 | Made by @misterofgames_yt")
@@ -56,7 +56,7 @@ class AutoClickerV3:
         self.animation_angle = 0
         self.animation_running = False
         
-        self.settings_file = "autoclicker_settings_v3.json"
+        self.settings_file = "autoclicker_settings_v2.json"
         self.load_settings()
         
         self.setup_ui()
@@ -487,7 +487,7 @@ class AutoClickerV3:
 def main():
     root = tk.Tk()
     try:
-        app = AutoClickerV3(root)
+        app = AutoClickerV2(root)
         root.protocol("WM_DELETE_WINDOW", app.on_closing)
         
         window_width = 450
