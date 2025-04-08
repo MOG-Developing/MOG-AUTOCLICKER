@@ -1,133 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MOG Autoclicker</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0f0f1a, #2c003e);
-      color: #eaeaea;
-      overflow-x: hidden;
-    }
-    header {
-      background: #1e002e;
-      padding: 1.2rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    }
-    header h1 {
-      font-size: 1.5rem;
-      color: #ae82ff;
-    }
-    nav a {
-      color: #d1baff;
-      margin-left: 1.5rem;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #ffffff;
-    }
-    .section {
-      padding: 3rem 2rem;
-      animation: fadeIn 1.5s ease forwards;
-    }
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #b58aff;
-    }
-    p {
-      line-height: 1.7;
-      margin-bottom: 1.2rem;
-    }
-    .btn {
-      background: #7b42f6;
-      padding: 0.8rem 1.6rem;
-      border: none;
-      color: #fff;
-      border-radius: 12px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .btn:hover {
-      background: #a06bff;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: #1e002e;
-      color: #999;
-      margin-top: 4rem;
-    }
-    @keyframes fadeIn {
-      0% {opacity: 0; transform: translateY(20px);}
-      100% {opacity: 1; transform: translateY(0);}
-    }
-  </style>
-  <script>
-    document.addEventListener("contextmenu", e => e.preventDefault());
-    document.onkeydown = function (e) {
-      if (e.key === "F12" || (e.ctrlKey && e.shiftKey && e.key === "I") || (e.ctrlKey && e.key === "u")) {
-        return false;
-      }
-    };
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOG-AUTOCLICKER</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #1a082a;
+            color: #e0d4ff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        nav {
+            background: #2d0b4d;
+            padding: 1.2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .nav-link {
+            color: #c79dff;
+            margin: 0 1.5rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            background: #4a1d6e;
+            transform: scale(1.05);
+        }
+
+        .page {
+            display: none;
+            padding: 2rem;
+            min-height: 80vh;
+        }
+
+        .active-page {
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #b47dff;
+            text-shadow: 0 0 15px rgba(180,125,255,0.4);
+        }
+
+        .gradient-box {
+            background: linear-gradient(45deg, #3a1155, #2b083b);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            border: 1px solid #4a2a6d;
+        }
+
+        pre {
+            background: #130623;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        code {
+            color: #d6b3ff;
+            font-family: 'Consolas', monospace;
+        }
+
+        button {
+            background: #6a2aba;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #8e4dff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(142,77,255,0.3);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .screenshot {
+            border-radius: 12px;
+            border: 2px solid #4a2a6d;
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot:hover {
+            transform: scale(1.03);
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>MOG-AUTOCLICKER</h1>
     <nav>
-      <a href="#tutorial">Tutorial</a>
-      <a href="#features">Features</a>
-      <a href="#download">Download</a>
+        <span class="nav-link" onclick="showPage('home')">Home</span>
+        <span class="nav-link" onclick="showPage('install')">Installation</span>
+        <span class="nav-link" onclick="showPage('features')">Features</span>
     </nav>
-  </header>
 
-  <section class="section" id="intro">
-    <h2>Welcome</h2>
-    <p>Made by <strong>@misterofgames_yt</strong>!<br>
-    MOG-AUTOCLICKER is a powerful and fast autoclicker that supports up to 10,000 CPS. Toggle key: <strong>G</strong>.</p>
-    <button class="btn" onclick="window.location.href='#download'">Download Now</button>
-  </section>
+    <div class="container">
+        <div id="home" class="page active-page">
+            <h1>MOG-AUTOCLICKER</h1>
+            <div class="gradient-box">
+                <p>Ultra-fast autoclicker with 1-10,000 CPS capability</p>
+                <div class="grid">
+                    <img src="https://github.com/user-attachments/assets/d6ebe9e8-3fc2-442e-8e03-0e2e653762d7" class="screenshot" alt="V1 UI">
+                    <img src="https://github.com/user-attachments/assets/7ac43ca3-9962-4aa5-ab17-e4c70c57cb8a" class="screenshot" alt="V2 UI">
+                </div>
+            </div>
+        </div>
 
-  <section class="section" id="tutorial">
-    <h2>How to Run</h2>
-    <p>Requires Python 3.11 or higher.</p>
-    <p>If it doesn't run, open CMD and run:</p>
-    <code>pip install keyboard mouse pyautogui tk ttkthemes pywin32 threading time messagebox ttk tkinter</code>
-  </section>
+        <div id="install" class="page">
+            <h1>Installation Guide</h1>
+            <div class="gradient-box">
+                <pre><code>pip install keyboard mouse pyautogui tk ttkthemes pywin32 threading time messagebox ttk tkinter</code></pre>
+                <button onclick="copyCode()">Copy Command</button>
+            </div>
+        </div>
 
-  <section class="section" id="features">
-    <h2>What's New in V2</h2>
-    <ul>
-      <li>Select CPS or MS</li>
-      <li>Randomization options</li>
-      <li>Left, Right, Middle click</li>
-      <li>Custom hotkeys</li>
-      <li>Improved UI & Performance</li>
-    </ul>
-  </section>
+        <div id="features" class="page">
+            <h1>Features</h1>
+            <div class="gradient-box">
+                <div class="grid">
+                    <div>
+                        <h3>Version 2 Highlights</h3>
+                        <ul>
+                            <li>CPS/MS Randomization</li>
+                            <li>Custom Hotkey Support</li>
+                            <li>Multi-button Support</li>
+                        </ul>
+                    </div>
+                    <img src="https://github.com/user-attachments/assets/fba2ea83-6756-443d-b9e9-7fe281f90f2c" class="screenshot" alt="Library Install">
+                </div>
+            </div>
+        </div>
+    </div>
 
-  <section class="section" id="download">
-    <h2>Download</h2>
-    <p><strong>By using this software, you agree to the</strong> <a href="https://github.com/MOG-Developing/MOG-AUTOCLICKER/blob/main/LICENSE" target="_blank">LICENSE</a>.</p>
-    <button class="btn" onclick="window.open('https://github.com/MOG-Developing/MOG-AUTOCLICKER/archive/refs/heads/main.zip')">Download V2 (ZIP)</button>
-  </section>
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active-page');
+            });
+            document.getElementById(pageId).classList.add('active-page');
+        }
 
-  <footer>
-    &copy; 2025 MOG-AUTOCLICKER | Designed by @misterofgames_yt
-  </footer>
+        function copyCode() {
+            navigator.clipboard.writeText('pip install keyboard mouse pyautogui tk ttkthemes pywin32 threading time messagebox ttk tkinter');
+        }
+
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.onkeydown = e => {
+            if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S')) {
+                e.preventDefault();
+            }
+        };
+    </script>
 </body>
 </html>
