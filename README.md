@@ -2,6 +2,8 @@
 
 Made by @misterofgames_yt! **V1** This autoclicker is very fast. the cps can go from 1 to 10 thousand (10k or 10000). It has right click and left click. It has a Toggle key which is the key G. 
 
+[WEBSITE](https://mog-developing.github.io/MOG-AUTOCLICKER)
+
 # TUTORIAL HOW TO RUN:
 Requirements: python 3.11 or higher (made in python 3.11 so recommended.)
 
