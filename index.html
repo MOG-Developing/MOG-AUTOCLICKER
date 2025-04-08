@@ -3,200 +3,893 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOG AutoClicker - Professional Auto Clicking Solution</title>
-    <meta name="description" content="MOG AutoClicker - The fastest and most reliable autoclicker with advanced features including CPS randomization, multiple click options, and custom hotkeys.">
-    <meta name="keywords" content="autoclicker, MOG, gaming, automation, mouse clicks, CPS">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <title>MOG-AUTOCLICKER</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        :root {
+            --dark-bg: #121212;
+            --dark-purple: #432874;
+            --medium-purple: #7b4bff;
+            --light-purple: #a17ffd;
+            --accent: #ff7eee;
+            --text: #f1f1f1;
+            --text-secondary: #d4d4d4;
+            --card-bg: #1a1a1a;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            padding: 0;
+            position: relative;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background-color: rgba(18, 18, 18, 0.9);
+            backdrop-filter: blur(8px);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(123, 75, 255, 0.2);
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--light-purple);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links li a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+        
+        .nav-links li a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+        
+        .nav-links li a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-links li a:hover:after {
+            width: 100%;
+        }
+        
+        .page {
+            min-height: 100vh;
+            padding: 8rem 2rem 4rem;
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .page.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            background: linear-gradient(to right, var(--medium-purple), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            padding: 2rem 0;
+        }
+        
+        .hero-image {
+            max-width: 650px;
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            border: 1px solid rgba(123, 75, 255, 0.3);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .hero-image:hover img {
+            transform: scale(1.03);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .btn {
+            padding: 0.875rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--dark-purple), var(--medium-purple));
+            color: var(--text);
+            box-shadow: 0 4px 20px rgba(123, 75, 255, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(123, 75, 255, 0.6);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--light-purple);
+            border: 2px solid var(--light-purple);
+            box-shadow: 0 4px 20px rgba(123, 75, 255, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(123, 75, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(123, 75, 255, 0.3);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        
+        .feature-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+            border: 1px solid rgba(123, 75, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(123, 75, 255, 0.2);
+            border-color: rgba(123, 75, 255, 0.3);
+        }
+        
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--dark-purple), var(--medium-purple));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .tutorial {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .step {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(123, 75, 255, 0.1);
+            transition: var(--transition);
+        }
+        
+        .step:hover {
+            box-shadow: 0 12px 25px rgba(123, 75, 255, 0.2);
+            border-color: rgba(123, 75, 255, 0.3);
+            transform: translateY(-5px);
+        }
+        
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .step-number {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(45deg, var(--dark-purple), var(--medium-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .step-content {
+            padding-left: 3rem;
+        }
+        
+        .step-content p, .step-content ul {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .step-content ul {
+            padding-left: 1.5rem;
+        }
+        
+        .step-content ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .code-block {
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+            padding: 1rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+            border: 1px solid rgba(123, 75, 255, 0.2);
+            font-family: monospace;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+            border: 1px solid rgba(123, 75, 255, 0.1);
+            aspect-ratio: 16/9;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(123, 75, 255, 0.3);
+            border-color: rgba(123, 75, 255, 0.3);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 1.5rem 1rem 1rem;
+            color: var(--text);
+            font-weight: 500;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .caption {
+            transform: translateY(0);
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(123, 75, 255, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            border: 2px solid rgba(123, 75, 255, 0.2);
+            background-color: rgba(0, 0, 0, 0.2);
+            color: var(--text);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--medium-purple);
+            box-shadow: 0 0 0 3px rgba(123, 75, 255, 0.3);
+        }
+        
+        textarea.form-input {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+        
+        footer {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(123, 75, 255, 0.2);
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(123, 75, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-purple);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--medium-purple);
+            color: var(--text);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                background: none;
+                border: none;
+                color: var(--text);
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+            
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .hero {
+                flex-direction: column;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+            
+            .feature-card {
+                padding: 1.5rem;
+            }
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            height: 100vh;
+            background-color: var(--card-bg);
+            z-index: 1001;
+            padding: 2rem;
+            transition: right 0.3s ease;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .mobile-nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .mobile-nav-links li a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: block;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+        
+        .mobile-nav-links li a:hover {
+            color: var(--accent);
+            transform: translateX(10px);
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--dark-purple), var(--medium-purple));
+            color: var(--text);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(123, 75, 255, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+        
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:hover {
+            transform: scale(1.1);
+        }
+        
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--dark-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+        
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .loader-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(123, 75, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--medium-purple);
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .loader-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--text);
+            letter-spacing: 2px;
+        }
+    </style>
 </head>
 <body>
-    <div class="scroll-progress"></div>
-    
-    <nav>
-        <div class="nav-content">
-            <div class="logo">MOG AutoClicker</div>
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Loading MOG-AUTOCLICKER</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <i class="fas fa-mouse-pointer logo-icon"></i>
+                MOG-AUTOCLICKER
+            </div>
             <ul class="nav-links">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#stats">Stats</a></li>
-                <li><a href="#download">Download</a></li>
-                <li><a href="#tutorial">Tutorial</a></li>
-                <li><a href="#changelog">Changelog</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="#support">Support</a></li>
+                <li><a href="#" data-page="home">Home</a></li>
+                <li><a href="#" data-page="features">Features</a></li>
+                <li><a href="#" data-page="tutorial">Tutorial</a></li>
+                <li><a href="#" data-page="screenshots">Screenshots</a></li>
+                <li><a href="#" data-page="download">Download</a></li>
+            </ul>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+
+        <div class="mobile-menu">
+            <div class="mobile-menu-header">
+                <div class="logo">
+                    <i class="fas fa-mouse-pointer logo-icon"></i>
+                    MOG-AUTOCLICKER
+                </div>
+                <button class="mobile-menu-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="#" data-page="home">Home</a></li>
+                <li><a href="#" data-page="features">Features</a></li>
+                <li><a href="#" data-page="tutorial">Tutorial</a></li>
+                <li><a href="#" data-page="screenshots">Screenshots</a></li>
+                <li><a href="#" data-page="download">Download</a></li>
             </ul>
         </div>
-    </nav>
 
-    <section id="home">
-        <div class="hero">
-            <h1>MOG AutoClicker</h1>
-            <p>Experience the next generation of auto-clicking with unmatched speed, precision, and customization. From gaming to automation, MOG AutoClicker is your ultimate solution.</p>
-            <a href="#download" class="cta-button">Download Now</a>
-        </div>
-    </section>
+        <div class="overlay"></div>
 
-    <section id="features">
-        <h2>Advanced Features</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <h3>Ultra Fast</h3>
-                <p>Achieve incredible speeds from 1 to 10,000 CPS with precise control and stability</p>
+        <div id="home" class="page active">
+            <div class="header">
+                <h1>MOG-AUTOCLICKER</h1>
+                <p>A lightning-fast autoclicker with up to 10,000 CPS capability, created by @misterofgames_yt</p>
             </div>
-            <div class="feature-card">
-                <h3>Multiple Clicks</h3>
-                <p>Support for left, right, and middle mouse buttons with individual configurations</p>
-            </div>
-            <div class="feature-card">
-                <h3>Custom Hotkeys</h3>
-                <p>Fully customizable keyboard shortcuts for seamless control and automation</p>
-            </div>
-            <div class="feature-card">
-                <h3>CPS Randomization</h3>
-                <p>Advanced click pattern randomization for natural-looking automation</p>
-            </div>
-            <div class="feature-card">
-                <h3>Status Indicator</h3>
-                <p>Real-time visual feedback showing the current state of the auto-clicker</p>
-            </div>
-            <div class="feature-card">
-                <h3>Modern UI</h3>
-                <p>Sleek, intuitive interface designed for efficiency and ease of use</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="stats">
-        <h2>Performance Metrics</h2>
-        <div class="stats-container">
-            <div class="stat-card">
-                <div class="stat-number" data-target="10000">0</div>
-                <div class="stat-label">Maximum CPS</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number"data-target="50000">0</div>
-                <div class="stat-label">Downloads</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" data-target="99">0</div>
-                <div class="stat-label">Uptime Percentage</div>
-            </div>
-        </div>
-    </section>
-
-    <section id="download">
-        <h2>Download</h2>
-        <div class="version-card">
-            <h3>Version 2.0</h3>
-            <ul>
-                <li>Advanced CPS/MS Selection</li>
-                <li>Intelligent Click Randomization</li>
-                <li>Multiple Click Options</li>
-                <li>Customizable Hotkeys</li>
-                <li>Real-time Status Indicator</li>
-                <li>Enhanced Performance</li>
-                <li>Improved UI/UX</li>
-            </ul>
-            <a href="https://github.com/MOG-Developing/MOG-AUTOCLICKER/releases/latest" class="download-button">Download V2</a>
-        </div>
-    </section>
-
-    <section id="tutorial">
-        <h2>Installation Guide</h2>
-        <div class="tutorial-container">
-            <div class="step">
-                <h3>Step 1: System Requirements</h3>
-                <p>Ensure you have Python 3.11 or higher installed on your system for optimal performance.</p>
-            </div>
-            <div class="step">
-                <h3>Step 2: Install Dependencies</h3>
-                <div class="code-block">
-                    <code>pip install keyboard mouse pyautogui tk ttkthemes pywin32 threading time messagebox ttk tkinter</code>
+            <div class="hero">
+                <div class="hero-image">
+                    <img src="/api/placeholder/800/450" alt="MOG-AUTOCLICKER Screenshot">
+                </div>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary" data-page="download">
+                        <i class="fas fa-download"></i> Download Now
+                    </a>
+                    <a href="#" class="btn btn-secondary" data-page="tutorial">
+                        <i class="fas fa-book"></i> How To Use
+                    </a>
                 </div>
             </div>
-            <div class="step">
-                <h3>Step 3: Launch Application</h3>
-                <p>Run the application and configure your preferred settings. The interface will guide you through the setup process.</p>
+            <div class="features">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Lightning Fast</h3>
+                    <p>Set the clicks per second from 1 to a blazing 10,000 CPS, making it one of the fastest autoclickers available.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-pointer"></i>
+                    </div>
+                    <h3>Multiple Click Options</h3>
+                    <p>Choose between left, right, and middle mouse button clicks for versatile usage across various applications.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-keyboard"></i>
+                    </div>
+                    <h3>Easy Toggle</h3>
+                    <p>Turn the autoclicker on/off with a quick press of the G key, or customize your own hotkeys for personalized control.</p>
+                </div>
             </div>
         </div>
-    </section>
 
-    <section id="changelog">
-        <h2>Changelog</h2>
-        <div class="changelog">
-            <div class="changelog-item">
-                <div class="changelog-version">Version 2.0</div>
-                <div class="changelog-date">Latest Release</div>
-                <ul class="changelog-changes">
-                    <li>Implemented advanced CPS/MS selection system</li>
-                    <li>Added sophisticated click pattern randomization</li>
-                    <li>Introduced support for multiple mouse buttons</li>
-                    <li>Enhanced UI with modern design elements</li>
-                    <li>Improved overall performance and stability</li>
-                </ul>
+        <div id="features" class="page">
+            <div class="header">
+                <h1>Features</h1>
+                <p>Explore the powerful capabilities of MOG-AUTOCLICKER V2</p>
             </div>
-            <div class="changelog-item">
-                <div class="changelog-version">Version 1.0</div>
-                <div class="changelog-date">Initial Release</div>
-                <ul class="changelog-changes">
-                    <li>Basic auto-clicking functionality</li>
-                    <li>Toggle key implementation (G key)</li>
-                    <li>Simple user interface</li>
-                    <li>Left and right click support</li>
-                </ul>
+            <div class="features">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Adjustable Speed</h3>
+                    <p>Precisely control click speed from 1 to 10,000 CPS or set it in milliseconds for perfect timing.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-dice"></i>
+                    </div>
+                    <h3>Randomization</h3>
+                    <p>Add natural randomization to your click timing to bypass detection systems in games and applications.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-mouse"></i>
+                    </div>
+                    <h3>Multi-Button Support</h3>
+                    <p>Select between left, right, and middle mouse buttons for diverse clicking requirements.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3>Custom Hotkeys</h3>
+                    <p>Configure your preferred keyboard shortcuts to start, stop, and control the autoclicker.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Status Indicator</h3>
+                    <p>Clear visual feedback shows whether the autoclicker is running or stopped at a glance.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Modern UI</h3>
+                    <p>Clean and intuitive interface makes the autoclicker easy to use while looking great on your desktop.</p>
+                </div>
             </div>
         </div>
-    </section>
 
-    <section id="faq">
-        <h2>Frequently Asked Questions</h2>
-        <div class="faq-section">
-            <div class="faq-item">
-                <div class="faq-question">What makes MOG AutoClicker different?</div>
-                <div class="faq-answer">MOG AutoClicker stands out with its combination of high performance, advanced features, and user-friendly interface. Our click randomization and custom hotkey system provide unmatched flexibility.</div>
+        <div id="tutorial" class="page">
+            <div class="header">
+                <h1>How To Use</h1>
+                <p>Get started with MOG-AUTOCLICKER in just a few simple steps</p>
             </div>
-            <div class="faq-item">
-                <div class="faq-question">Is it safe to use?</div>
-                <div class="faq-answer">Yes, MOG AutoClicker is completely safe and open-source. You can review the code on our GitHub repository. However, always check the rules and policies of the applications where you plan to use it.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">What's the maximum CPS?</div>
-                <div class="faq-answer">MOG AutoClicker can achieve up to 10,000 CPS (Clicks Per Second), though we recommend using lower values for most applications to ensure stability and prevent system strain.</div>
-            </div>
-        </div>
-    </section>
-
-    <section id="support">
-        <h2>Support</h2>
-        <div class="support-grid">
-            <div class="support-card">
-                <div class="support-icon">📖</div>
-                <div class="support-title">Documentation</div>
-                <p class="support-text">Comprehensive guides and documentation for all features</p>
-                <a href="https://github.com/MOG-Developing/MOG-AUTOCLICKER/wiki" class="support-link">View Docs</a>
-            </div>
-            <div class="support-card">
-                <div class="support-icon">🐛</div>
-                <div class="support-title">Issue Tracking</div>
-                <p class="support-text">Report bugs or request new features</p>
-                <a href="https://github.com/MOG-Developing/MOG-AUTOCLICKER/issues" class="support-link">Submit Issue</a>
-            </div>
-            <div class="support-card">
-                <div class="support-icon">💬</div>
-                <div class="support-title">Community</div>
-                <p class="support-text">Join our community for discussions and support</p>
-                <a href="https://github.com/MOG-Developing/MOG-AUTOCLICKER/discussions" class="support-link">Join Discussion</a>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>Made by @misterofgames_yt</p>
-        <p>By downloading, you agree to the <a href="https://github.com/MOG-Developing/MOG-AUTOCLICKER/blob/main/LICENSE">License</a></p>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+            <div class="tutorial">
+                <div class="step fade-in">
+                    <div class="step-header">
+                        <div class="step-number">1</div>
+                        <h3>System Requirements</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>Before you begin, make sure your system meets these requirements:</p>
+                        <ul>
+                            <li>Python 3.11 or higher (recommended)</li>
+                            <li>Windows operating system</li>
+                            <li>Basic knowledge of running Python applications</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-header">
+                        <div class="step-number">2</div>
+                        <h3>Install Required Libraries</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>Open Command Prompt (CMD) and run the following command to install all required dependencies:</p>
+                        <div class="code-block">pip install keyboard mouse pyautogui tk ttkthemes pywin32 threading time messagebox ttk tkinter</div>
+                    </div>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-header">
+                        <div class="step-number">3</div>
+                        <h3>Download and Extract</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>Download the latest version of MOG-AUTOCLICKER from the download page and extract the ZIP file to a location of your choice.</p>
+                    </div>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-header">
+                        <div class="step-number">4</div>
+                        <h3>Run the Application</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>Navigate to the extracted folder and run the main Python script:</p>
+                        <ul>
+                            <li>Double-click the Python file to run it directly, or</li>
+                            <li>Open Command Prompt, navigate to the folder, and type <code>python mog_autoclicker.py</code></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-header">
+                        <div class="step-number">5</div>
+                        <h3>Configure Settings</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>In the autoclicker interface:</p>
+                        <ul>
