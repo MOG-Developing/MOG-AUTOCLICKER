@@ -1,105 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MOG Autoclicker</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      background-color: #f4f4f4;
-      color: #333;
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
-    .container {
-      width: 80%;
-      margin: auto;
-      overflow: hidden;
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f0f1a, #2c003e);
+      color: #eaeaea;
+      overflow-x: hidden;
     }
     header {
-      background: #333;
-      color: #fff;
-      padding-top: 30px;
-      min-height: 70px;
-      border-bottom: #0779e4 3px solid;
+      background: #1e002e;
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
-    header a {
-      color: #fff;
+    header h1 {
+      font-size: 1.5rem;
+      color: #ae82ff;
+    }
+    nav a {
+      color: #d1baff;
+      margin-left: 1.5rem;
       text-decoration: none;
-      text-transform: uppercase;
-      font-size: 16px;
+      font-weight: bold;
+      transition: color 0.3s;
     }
-    .button {
-      display: inline-block;
-      font-size: 18px;
+    nav a:hover {
+      color: #ffffff;
+    }
+    .section {
+      padding: 3rem 2rem;
+      animation: fadeIn 1.5s ease forwards;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #b58aff;
+    }
+    p {
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+    }
+    .btn {
+      background: #7b42f6;
+      padding: 0.8rem 1.6rem;
+      border: none;
       color: #fff;
-      background: #333;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 5px;
+      border-radius: 12px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
     }
-    .button:hover {
-      background: #0779e4;
-    }
-    .showcase {
-      background: #333;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-    .content {
-      padding: 20px;
-      background: #fff;
-      margin-top: 20px;
-      border-radius: 5px;
+    .btn:hover {
+      background: #a06bff;
     }
     footer {
       text-align: center;
-      padding: 20px;
-      background: #333;
-      color: #fff;
-      margin-top: 20px;
+      padding: 2rem;
+      background: #1e002e;
+      color: #999;
+      margin-top: 4rem;
+    }
+    @keyframes fadeIn {
+      0% {opacity: 0; transform: translateY(20px);}
+      100% {opacity: 1; transform: translateY(0);}
     }
   </style>
+  <script>
+    document.addEventListener("contextmenu", e => e.preventDefault());
+    document.onkeydown = function (e) {
+      if (e.key === "F12" || (e.ctrlKey && e.shiftKey && e.key === "I") || (e.ctrlKey && e.key === "u")) {
+        return false;
+      }
+    };
+  </script>
 </head>
 <body>
   <header>
-    <div class="container">
-      <h1>MOG Autoclicker</h1>
-    </div>
+    <h1>MOG-AUTOCLICKER</h1>
+    <nav>
+      <a href="#tutorial">Tutorial</a>
+      <a href="#features">Features</a>
+      <a href="#download">Download</a>
+    </nav>
   </header>
 
-  <div class="showcase">
-    <div class="container">
-      <h2>Welcome to MOG Autoclicker</h2>
-      <p>A fast and reliable autoclicker with customizable features.</p>
-      <a href="https://github.com/MOG-Developing/MOG-AUTOCLICKER/releases/download/v2.0/MOG-AUTOCLICKER_V2.exe" class="button">Download Now</a>
-    </div>
-  </div>
+  <section class="section" id="intro">
+    <h2>Welcome</h2>
+    <p>Made by <strong>@misterofgames_yt</strong>!<br>
+    MOG-AUTOCLICKER is a powerful and fast autoclicker that supports up to 10,000 CPS. Toggle key: <strong>G</strong>.</p>
+    <button class="btn" onclick="window.location.href='#download'">Download Now</button>
+  </section>
 
-  <div class="container content">
-    <h3>Features</h3>
+  <section class="section" id="tutorial">
+    <h2>How to Run</h2>
+    <p>Requires Python 3.11 or higher.</p>
+    <p>If it doesn't run, open CMD and run:</p>
+    <code>pip install keyboard mouse pyautogui tk ttkthemes pywin32 threading time messagebox ttk tkinter</code>
+  </section>
+
+  <section class="section" id="features">
+    <h2>What's New in V2</h2>
     <ul>
-      <li>Adjustable clicks per second (CPS) from 1 to 10,000.</li>
-      <li>Supports right, left, and middle mouse clicks.</li>
-      <li>Toggle key set to 'G' for easy activation.</li>
-      <li>Customizable CPS/MS and randomization options.</li>
-      <li>User-friendly interface with status indicators.</li>
+      <li>Select CPS or MS</li>
+      <li>Randomization options</li>
+      <li>Left, Right, Middle click</li>
+      <li>Custom hotkeys</li>
+      <li>Improved UI & Performance</li>
     </ul>
+  </section>
 
-    <h3>Installation</h3>
-    <p>Requirements: Python 3.11 or higher.</p>
-    <p>If the application doesn't run, open Command Prompt and execute the following command to install the necessary dependencies:</p>
-    <pre>pip install keyboard mouse pyautogui tk ttkthemes pywin32 threading time messagebox ttk tkinter</pre>
-
-    <h3>License</h3>
-    <p>By downloading or using this software, you automatically agree to the <a href="LICENSE">LICENSE</a>.</p>
-  </div>
+  <section class="section" id="download">
+    <h2>Download</h2>
+    <p><strong>By using this software, you agree to the</strong> <a href="https://github.com/MOG-Developing/MOG-AUTOCLICKER/blob/main/LICENSE" target="_blank">LICENSE</a>.</p>
+    <button class="btn" onclick="window.open('https://github.com/MOG-Developing/MOG-AUTOCLICKER/archive/refs/heads/main.zip')">Download V2 (ZIP)</button>
+  </section>
 
   <footer>
-    <p>&copy; 2025 MOG-Developing. All rights reserved.</p>
+    &copy; 2025 MOG-AUTOCLICKER | Designed by @misterofgames_yt
   </footer>
 </body>
 </html>
