@@ -1,1 +1,203 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MOG-AUTOCLICKER</title><style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');:root{--bg:#0a0614;--primary:#4a1a5a;--secondary:#2d0d3a;--accent:#9d4edd;--text:#f0e6ff;--card:#1a1029;--gradient:linear-gradient(135deg,#6a2c8c,#4a1a5a,#2d0d3a)}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}.loader{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--gradient);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:opacity .5s}.loader-spinner{width:50px;height:50px;border:5px solid rgba(255,255,255,.1);border-radius:50%;border-top-color:var(--accent);animation:spin 1s linear infinite;margin-bottom:20px}.loader-text{font-size:1.2rem;letter-spacing:2px;background:linear-gradient(90deg,var(--accent),#c77dff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:pulse 1.5s infinite}@keyframes spin{100%{transform:rotate(360deg)}}@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}.navbar{background:var(--gradient);padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 30px rgba(106,44,140,.4);position:fixed;width:100%;top:0;z-index:100}.logo{font-size:1.8rem;font-weight:700;background:linear-gradient(90deg,#fff,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}.nav-links{display:flex;gap:2.5rem}.nav-link{color:var(--text);text-decoration:none;font-weight:500;position:relative;padding:.5rem 0;font-size:1.1rem;opacity:.8;transition:all .3s}.nav-link:after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width .3s}.nav-link:hover{opacity:1}.nav-link:hover:after{width:100%}.container{padding:8rem 3rem 3rem;max-width:1400px;margin:0 auto}.hero{text-align:center;padding:4rem 0}.hero h1{font-size:3.5rem;margin-bottom:1.5rem;background:linear-gradient(90deg,var(--accent),#c77dff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1px}.hero p{font-size:1.3rem;max-width:800px;margin:0 auto 3rem;line-height:1.6;opacity:.9}.btn-group{display:flex;gap:1.5rem;justify-content:center}.btn{background:var(--gradient);color:white;border:none;padding:1rem 2.2rem;border-radius:50px;font-weight:600;cursor:pointer;box-shadow:0 4px 25px rgba(157,78,221,.4);position:relative;overflow:hidden;font-size:1.1rem;transition:all .4s;z-index:1}.btn:before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,var(--accent),var(--primary));opacity:0;transition:opacity .4s;z-index:-1}.btn:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(157,78,221,.6)}.btn:hover:before{opacity:1}.btn-secondary{background:transparent;border:2px solid var(--accent)}.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:2.5rem;margin:5rem 0}.feature-card{background:linear-gradient(145deg,#1a1029,#140c21);border-radius:20px;padding:2.5rem;box-shadow:0 10px 40px rgba(26,16,41,.7);border:1px solid rgba(157,78,221,.2);transition:all .4s}.feature-card:hover{transform:translateY(-10px);box-shadow:0 15px 50px rgba(106,44,140,.5);border-color:rgba(157,78,221,.4)}.feature-card h3{color:var(--accent);margin-bottom:1.5rem;font-size:1.5rem}.feature-card p{opacity:.8;line-height:1.7;margin-bottom:1rem}.feature-card ul{margin-left:1.5rem;opacity:.9}.feature-card li{margin-bottom:.5rem}.screenshots{margin:6rem 0}.screenshots h2{text-align:center;margin-bottom:3rem;font-size:2.5rem;background:linear-gradient(90deg,var(--accent),#c77dff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.screenshot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}.screenshot{width:100%;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,.4);transition:all .4s;aspect-ratio:16/9;object-fit:cover;border:2px solid rgba(157,78,221,.3)}.screenshot:hover{transform:scale(1.05);box-shadow:0 15px 40px rgba(157,78,221,.4)}.page{display:none;animation:fadeIn .5s ease}.page.active{display:block}@keyframes fadeIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}.footer{background:var(--gradient);padding:3rem;text-align:center;margin-top:6rem}.footer p{opacity:.8}.download-section{text-align:center;padding:4rem 0}.download-section h1{margin-bottom:2rem}.download-options{display:flex;justify-content:center;gap:3rem;margin-top:3rem;flex-wrap:wrap}.version-card{background:linear-gradient(145deg,#1a1029,#140c21);padding:2.5rem;border-radius:20px;width:350px;box-shadow:0 10px 40px rgba(26,16,41,.7);border:1px solid rgba(157,78,221,.2);transition:all .4s}.version-card:hover{transform:translateY(-10px);box-shadow:0 15px 50px rgba(106,44,140,.5)}.version-card h3{margin-bottom:1.5rem;color:var(--accent);font-size:1.5rem}.version-card p{margin-bottom:1.5rem;opacity:.8;line-height:1.6}.version-card .btn{margin-top:1rem;width:100%}.badge{background:var(--gradient);color:white;padding:.3rem 1rem;border-radius:50px;font-size:.9rem;font-weight:600;display:inline-block;margin-left:.5rem}.tabs{display:flex;gap:1.5rem;margin-bottom:3rem;justify-content:center}.tab-btn{background:none;border:none;color:var(--text);font-size:1.1rem;cursor:pointer;padding:.7rem 1.5rem;position:relative;opacity:.7;transition:all .3s}.tab-btn.active{opacity:1;color:var(--accent)}.tab-btn.active:after{content:'';position:absolute;bottom:-.5rem;left:50%;transform:translateX(-50%);width:30px;height:3px;background:var(--accent);border-radius:3px}.tab-content{display:none}.tab-content.active{display:block}.code-block{background:#140c21;padding:1.5rem;border-radius:15px;border-left:4px solid var(--accent);overflow-x:auto;margin:1.5rem 0;font-family:monospace;font-size:1.1rem;color:#c77dff}.code-block code{font-family:monospace}.license-text{max-height:500px;overflow-y:auto;padding-right:1.5rem;line-height:1.7}.license-text p{margin-bottom:1rem}.license-text::-webkit-scrollbar{width:6px}.license-text::-webkit-scrollbar-track{background:var(--card)}.license-text::-webkit-scrollbar-thumb{background:var(--primary);border-radius:3px}.floating-btn{position:fixed;bottom:2.5rem;right:2.5rem;width:60px;height:60px;border-radius:50%;background:var(--gradient);color:white;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 5px 25px rgba(106,44,140,.6);cursor:pointer;z-index:100;transition:all .3s;border:none}.floating-btn:hover{transform:scale(1.1) translateY(-5px);box-shadow:0 8px 30px rgba(157,78,221,.7)}.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(10,6,20,.95);z-index:1000;align-items:center;justify-content:center;backdrop-filter:blur(5px)}.modal-content{background:linear-gradient(145deg,#1a1029,#140c21);padding:3rem;border-radius:20px;max-width:700px;width:90%;position:relative;animation:modalFadeIn .4s ease;border:1px solid rgba(157,78,221,.3);box-shadow:0 15px 50px rgba(26,16,41,.8)}@keyframes modalFadeIn{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}.close-modal{position:absolute;top:1.5rem;right:1.5rem;font-size:1.8rem;cursor:pointer;opacity:.7;transition:opacity .3s}.close-modal:hover{opacity:1}.requirements{padding:3rem 0}.requirements h2{text-align:center;margin-bottom:2rem;font-size:2rem;background:linear-gradient(90deg,var(--accent),#c77dff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.requirements-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}.requirement-card{background:linear-gradient(145deg,#1a1029,#140c21);padding:2rem;border-radius:15px;box-shadow:0 10px 30px rgba(26,16,41,.7);border:1px solid rgba(157,78,221,.2)}.requirement-card h3{color:var(--accent);margin-bottom:1rem}.requirement-card p{opacity:.8;line-height:1.7}@media(max-width:992px){.navbar{padding:1rem 2rem}.nav-links{gap:1.5rem}.hero h1{font-size:2.8rem}.btn-group{flex-direction:column;align-items:center}.btn{width:100%;max-width:300px}.features{grid-template-columns:1fr}.version-card{width:100%;max-width:400px}}@media(max-width:768px){.navbar{flex-direction:column;gap:1.5rem;padding:1.5rem}.nav-links{gap:1rem;flex-wrap:wrap;justify-content:center}.hero h1{font-size:2.2rem}.hero p{font-size:1.1rem}.container{padding:10rem 1.5rem 2rem}.feature-card{padding:2rem}.modal-content{padding:2rem 1.5rem}}</style></head><body><div class="loader"><div class="loader-spinner"></div><div class="loader-text">LOADING MOG-AUTOCLICKER</div></div><div class="navbar"><div class="logo">MOG-AUTOCLICKER</div><div class="nav-links"><a href="#" class="nav-link active" data-page="home">Home</a><a href="#" class="nav-link" data-page="features">Features</a><a href="#" class="nav-link" data-page="download">Download</a><a href="#" class="nav-link" data-page="tutorial">Tutorial</a><a href="#" class="nav-link" data-page="license">License</a></div></div><div class="container"><div id="home" class="page active"><div class="hero"><h1>MOG-AUTOCLICKER V1 & V2</h1><p>Ultimate autoclicker with extreme speeds from 1 to 10,000 CPS. Features right/left click, toggle key (G), and in V2: CPS/MS selection, randomization, middle click, custom hotkeys, and improved UI.</p><div class="btn-group"><button class="btn" id="download-btn">Download Now</button><button class="btn btn-secondary" id="learn-more">View Features</button></div></div><div class="features"><div class="feature-card"><h3>⚡ Extreme Speed</h3><p>Unmatched clicking speed from 1 to 10,000 CPS (clicks per second) with precise control.</p><ul><li>Toggle key: G (customizable in V2)</li><li>Left and right click support</li><li>Lightweight and efficient</li></ul></div><div class="feature-card"><h3>🔄 Version 2 Updates</h3><p>Enhanced features in V2 release:</p><ul><li>CPS/MS selection mode</li><li>Randomization between min/max values</li><li>Middle mouse click support</li><li>Customizable hotkeys</li><li>Status indicator</li></ul></div><div class="feature-card"><h3>💻 Easy Installation</h3><p>Simple setup process:</p><ul><li>Python 3.11+ required</li><li>Single command installs all dependencies</li><li>Works on Windows systems</li><li>Detailed tutorial included</li></ul></div></div><div class="screenshots"><h2>Application Screenshots</h2><div class="screenshot-grid"><img src="https://github.com/user-attachments/assets/d6ebe9e8-3fc2-442e-8e03-0e2e653762d7" alt="V1 Interface" class="screenshot"><img src="https://github.com/user-attachments/assets/c5690334-f6a4-4349-8e6a-29b452b0787a" alt="V1 Settings" class="screenshot"><img src="https://github.com/user-attachments/assets/7ac43ca3-9962-4aa5-ab17-e4c70c57cb8a" alt="V2 Interface" class="screenshot"><img src="https://github.com/user-attachments/assets/fba2ea83-6756-443d-b9e9-7fe281f90f2c" alt="Library Install" class="screenshot"></div></div></div><div id="features" class="page"><h1>Features</h1><div class="tabs"><button class="tab-btn active" data-tab="v1">Version 1</button><button class="tab-btn" data-tab="v2">Version 2</button></div><div class="tab-content active" id="v1"><div class="feature-card"><h3>MOG-AUTOCLICKER V1</h3><p>The original high-performance autoclicker:</p><ul><li>Default toggle key: G</li><li>Left and right mouse click support</li><li>CPS range: 1 to 10,000</li><li>Simple interface</li><li>Minimal resource usage</li></ul></div></div><div class="tab-content" id="v2"><div class="feature-card"><h3>MOG-AUTOCLICKER V2 <span class="badge">NEW</span></h3><p>Advanced version with more features:</p><ul><li>Select between CPS or milliseconds</li><li>Randomize CPS/MS between min/max</li><li>Left/Right/Middle click options</li><li>Custom hotkey configuration</li><li>Status display (Stopped/Turned On)</li><li>Modern redesigned UI</li><li>Improved performance</li></ul></div></div></div><div id="download" class="page"><div class="download-section"><h1>Download MOG-AUTOCLICKER</h1><p>Choose your preferred version below</p><div class="download-options"><div class="version-card"><h3>Version 1</h3><p>Original autoclicker with basic functionality</p><button class="btn">Download V1</button></div><div class="version-card"><h3>Version 2 <span class="badge">Recommended</span></h3><p>Enhanced autoclicker with advanced features</p><button class="btn">Download V2</button></div></div></div></div><div id="tutorial" class="page"><div class="requirements"><h2>Installation Requirements</h2><div class="requirements-grid"><div class="requirement-card"><h3>Python Version</h3><p>Python 3.11 or higher required (developed on 3.11)</p></div><div class="requirement-card"><h3>System</h3><p>Windows operating system recommended</p></div></div></div><div class="feature-card"><h3>Installation Tutorial</h3><p>If the software doesn't run, install dependencies using this command:</p><div class="code-block"><code>pip install keyboard mouse pyautogui tk ttkthemes pywin32 threading time messagebox ttk tkinter</code></div><p>This installs all required libraries for the autoclicker to function properly.</p></div></div><div id="license" class="page"><h1>License Agreement</h1><div class="feature-card"><div class="license-text"><p>By downloading or using MOG-AUTOCLICKER, you automatically agree to:</p><p>1. This software is provided "as is" without any warranties.</p><p>2. The developer is not responsible for any damages.</p><p>3. Redistribution requires explicit permission.</p><p>4. Intended for educational purposes only.</p><p>5. Misuse is not the developer's responsibility.</p><p>6. You must be 13+ years old to use this software.</p><p>7. Commercial use is prohibited without authorization.</p></div><button class="btn" id="agree-btn">I Agree to License Terms</button></div></div></div><div class="footer"><p>© 2023 MOG-AUTOCLICKER | Created by @misterofgames_yt</p></div><button class="floating-btn" id="back-to-top">↑</button><div class="modal" id="license-modal"><div class="modal-content"><span class="close-modal">&times;</span><h2>Full License Agreement</h2><div class="license-text"><p>MOG-AUTOCLICKER OFFICIAL LICENSE</p><p>1. GRANT OF LICENSE</p><p>The developer grants you a limited, non-exclusive license to use the software for personal, non-commercial purposes.</p><p>2. RESTRICTIONS</p><p>You may not: reverse engineer, modify, redistribute, or use the software for any illegal activities. The G key toggle and other functionality must not be used to gain unfair advantages in online games.</p><p>3. AUTOCLICKER SPECIFICS</p><p>The software provides clicking functionality from 1 to 10,000 CPS. Version 2 adds randomization and custom hotkeys. These features are provided as-is.</p><p>4. LIABILITY</p><p>The developer takes no responsibility for bans or penalties incurred from using this software in games or other applications.</p><p>5. TERMINATION</p><p>The license terminates automatically if you violate any terms. You must then destroy all copies of the software.</p><p>6. PYTHON DEPENDENCIES</p><p>The listed Python packages (keyboard, mouse, pyautogui etc.) are required for full functionality as described in the tutorial section.</p></div><button class="btn" id="modal-agree-btn">Accept and Continue</button></div></div><script>document.addEventListener('DOMContentLoaded',function(){setTimeout(function(){document.querySelector('.loader').style.opacity='0';setTimeout(function(){document.querySelector('.loader').style.display='none'},500)},1500);const pages=document.querySelectorAll('.page');const navLinks=document.querySelectorAll('.nav-link');const tabBtns=document.querySelectorAll('.tab-btn');const tabContents=document.querySelectorAll('.tab-content');const backToTop=document.getElementById('back-to-top');const licenseModal=document.getElementById('license-modal');const closeModal=document.querySelector('.close-modal');const agreeBtn=document.getElementById('agree-btn');const modalAgreeBtn=document.getElementById('modal-agree-btn');navLinks.forEach(link=>{link.addEventListener('click',function(e){e.preventDefault();const pageId=this.getAttribute('data-page');navLinks.forEach(navLink=>navLink.classList.remove('active'));this.classList.add('active');pages.forEach(page=>{page.classList.remove('active');if(page.id===pageId){setTimeout(()=>page.classList.add('active'),10);window.scrollTo({top:0,behavior:'smooth'})}})})});tabBtns.forEach(btn=>{btn.addEventListener('click',function(){const tabId=this.getAttribute('data-tab');tabBtns.forEach(tabBtn=>tabBtn.classList.remove('active'));this.classList.add('active');tabContents.forEach(content=>{content.classList.remove('active');if(content.id===tabId)content.classList.add('active')})})});window.addEventListener('scroll',function(){if(window.pageYOffset>300){backToTop.style.display='flex';backToTop.style.animation='fadeIn .3s ease'}else{backToTop.style.animation='fadeOut .3s ease';setTimeout(()=>backToTop.style.display='none',300)}});backToTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});agreeBtn.addEventListener('click',function(){licenseModal.style.display='flex'});closeModal.addEventListener('click',function(){licenseModal.style.display='none'});modalAgreeBtn.addEventListener('click',function(){licenseModal.style.display='none';alert('License accepted. You may now use MOG-AUTOCLICKER.')});window.addEventListener('click',function(e){if(e.target===licenseModal)licenseModal.style.display='none'});document.getElementById('download-btn').addEventListener('click',function(){document.querySelector('.nav-link[data-page="download"]').click()});document.getElementById('learn-more').addEventListener('click',function(){document.querySelector('.nav-link[data-page="features"]').click()});function obfuscate(e){let t="";for(let n=0;n<e.length;n++)t+="&#"+e.charCodeAt(n)+";";return t}const originalCode=document.querySelector('script').innerHTML;document.querySelector('script').innerHTML=obfuscate(originalCode);</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOG-AUTOCLICKER</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(45deg, #3a1155, #2b083b);
+            color: #e0d4ff;
+            overflow-x: hidden;
+        }
+
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(45deg, #3a1155, #2b083b);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .loading-screen::before {
+            content: '';
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 5px solid #6a2aba;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .container {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.6s ease-out forwards;
+            animation-delay: 2s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        nav {
+            background: #4a1d6e;
+            padding: 1.2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            border-radius: 8px;
+        }
+
+        .nav-link {
+            color: #c79dff;
+            margin: 0 1.5rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            background: #6a2aba;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(106,42,186,0.3);
+        }
+
+        .page {
+            display: none;
+            padding: 2rem;
+            min-height: 80vh;
+            border-radius: 12px;
+            background: linear-gradient(45deg, #2b083b, #1a082a);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            margin-top: 1rem;
+        }
+
+        .active-page {
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #b47dff;
+            text-shadow: 0 0 15px rgba(180,125,255,0.4);
+        }
+
+        .screenshot {
+            border-radius: 12px;
+            border: 2px solid #4a2a6d;
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot:hover {
+            transform: scale(1.03);
+        }
+
+        button {
+            background: #6a2aba;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #8e4dff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(142,77,255,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-screen"></div>
+    <div class="container">
+        <nav>
+            <span class="nav-link" onclick="showPage('home')">Home</span>
+            <span class="nav-link" onclick="showPage('install')">Installation</span>
+            <span class="nav-link" onclick="showPage('features')">Features</span>
+        </nav>
+
+        <div id="home" class="page active-page">
+            <h1>MOG-AUTOCLICKER</h1>
+            <p>Made by @misterofgames_yt! **V1** This autoclicker is very fast. The CPS can go from 1 to 10 thousand (10k or 10000). It has right click and left click. It has a Toggle key which is the key G.</p>
+            <div style="display: flex; gap: 1.5rem;">
+                <img src="https://github.com/user-attachments/assets/d6ebe9e8-3fc2-442e-8e03-0e2e653762d7" class="screenshot" alt="V1 UI" style="width: 300px;">
+                <img src="https://github.com/user-attachments/assets/c5690334-f6a4-4349-8e6a-29b452b0787a" class="screenshot" alt="V1 UI" style="width: 300px;">
+            </div>
+        </div>
+
+        <div id="install" class="page">
+            <h1>Installation Guide</h1>
+            <p>Requirements: Python 3.11 or higher.</p>
+            <p>Run the following command in CMD:</p>
+            <pre style="background-color: #130623; padding: 1.5rem; border-radius: 8px; overflow-x: auto;">
+                pip install keyboard mouse pyautogui tk ttkthemes pywin32 threading time messagebox ttk tkinter
+            </pre>
+            <button onclick="copyCode()">Copy Command</button>
+        </div>
+
+        <div id="features" class="page">
+            <h1>Features</h1>
+            <p><strong>V2</strong> is an improved version of V1.</p>
+            <ul>
+                <li>Selecting CPS/MS</li>
+                <li>CPS/MS randomization</li>
+                <li>Left, Right, Middle click options</li>
+                <li>Custom hotkeys</li>
+                <li>Status Stopped/Turned On</li>
+                <li>Improved UI</li>
+            </ul>
+            <img src="https://github.com/user-attachments/assets/7ac43ca3-9962-4aa5-ab17-e4c70c57cb8a" class="screenshot" alt="V2 UI" style="width: 500px; margin: 1rem auto;">
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active-page');
+            });
+            document.getElementById(pageId).classList.add('active-page');
+        }
+
+        function copyCode() {
+            navigator.clipboard.writeText('pip install keyboard mouse pyautogui tk ttkthemes pywin32 threading time messagebox ttk tkinter');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.querySelector('.loading-screen').style.display = 'none';
+            }, 2000);
+        });
+
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.onkeydown = e => {
+            if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S')) {
+                e.preventDefault();
+            }
+        };
+    </script>
+</body>
+</html>
