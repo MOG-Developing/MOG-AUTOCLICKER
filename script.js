@@ -44,35 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', () => { resize(); initBg(); });
     resize(); initBg(); animate();
 
-    function navigate(pageId) {
-        pages.forEach(p => p.classList.remove('active'));
-        const target = document.getElementById(pageId);
-        if (target) target.classList.add('active');
-        
-        navLinks.forEach(l => {
-            l.classList.remove('active');
-            if (l.getAttribute('data-page') === pageId) l.classList.add('active');
-        });
-
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        if (pageId === 'download' && allReleases.length === 0) fetchReleases();
-    }
-
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const pageId = link.getAttribute('data-page');
-            navigate(pageId);
-            window.location.hash = pageId;
-        });
-    });
-
-    window.navigate = navigate;
-
     let allReleases = [];
     let displayedCount = 4;
 
     async function fetchReleases() {
+        if (!latestMount) return;
         try {
             const response = await fetch('https://api.github.com/repos/MOG-Developing/MOG-AUTOCLICKER/releases');
             if (!response.ok) throw new Error('Repository unavailable');
@@ -150,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const initialHash = window.location.hash.slice(1);
-    if (initialHash && document.getElementById(initialHash)) navigate(initialHash);
+    if (latestMount) {
+        fetchReleases();
+    }
 });
