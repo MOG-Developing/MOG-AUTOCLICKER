@@ -19,7 +19,7 @@ src/resource.res ^
 -mwindows ^
 -ld3d11 -ld3dcompiler -ldxgi -ldwmapi ^
 -lgdi32 -limm32 -lwinmm -lshell32 ^
--static-libgcc -static-libstdc++ ^
+-static -static-libgcc -static-libstdc++ ^
 -ffunction-sections -fdata-sections ^
 -Wl,--gc-sections
 
