@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download - MOG-AUTOCLICKER</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="background-container">
+        <canvas id="canvas"></canvas>
+    </div>
+    
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="logo">MOG-AUTOCLICKER</div>
+            <div class="nav-links">
+                <a href="index.html" data-page="home">Home</a>
+                <a href="download.html" class="active" data-page="download">Download</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Download Page -->
+        <section class="page active" id="download">
+            <div class="releases-container">
+                <div class="release-section">
+                    <div class="section-header">
+                        <div class="accent-line"></div>
+                        <h2>Latest Release</h2>
+                    </div>
+                    <div id="latest-mount">
+                        <div class="loading">Loading latest version...</div>
+                    </div>
+                </div>
+
+                <div class="release-section">
+                    <div class="section-header">
+                        <div class="accent-line dim"></div>
+                        <h3>Older versions</h3>
+                    </div>
+                    <div id="archive-mount" class="releases-list"></div>
+                    <button id="show-more" class="btn-show-more" style="display: none;">Show more</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <span>&copy; 2026 MOG-Developing</span>
+                <span class="divider">|</span>
+                <span>MIT License</span>
+            </div>
+            <a href="https://github.com/MOG-Developing/MOG-AUTOCLICKER" target="_blank" class="github-link">GitHub</a>
+        </div>
+    </footer>
+</body>
+</html>
