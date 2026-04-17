@@ -4,7 +4,7 @@ MOG-AUTOCLICKER is a lightweight, fast, open source, and customizable mouse clic
 
 [WEBSITE](https://mog-developing.github.io/MOG-AUTOCLICKER)
 
-![GitHub tag (latest by semver)](https://img.shields.io/github/v/tag/MOG-Developing/MOG-AUTOCLICKER?color=orange&label=Latest%20Release) ![License](https://img.shields.io/github/license/MOG-Developing/MOG-AUTOCLICKER) ![Stars](https://img.shields.io/github/stars/MOG-Developing/MOG-AUTOCLICKER?style=social)
+[![Downloads](https://img.shields.io/github/downloads/MOG-Developing/MOG-AUTOCLICKER/total?style=for-the-badge&label=downloads&color=orange)](https://github.com/MOG-Developing/MOG-AUTOCLICKER/releases) ![License](https://img.shields.io/github/license/MOG-Developing/MOG-AUTOCLICKER) ![Stars](https://img.shields.io/github/stars/MOG-Developing/MOG-AUTOCLICKER?style=social)
 
 ## Why you should use this AutoClicker?
 - Our AutoClicker is modern, lightweight and easy to use!
