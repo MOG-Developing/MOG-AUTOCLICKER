@@ -1,34 +1,32 @@
 # MOG-AUTOCLICKER
 
-Made by @misterofgames_yt! **V1** This autoclicker is very fast. the cps can go from 1 to 10 thousand (10k or 10000). It has right click and left click. It has a Toggle key which is the key G. 
-
+MOG-AUTOCLICKER is a lightweight, fast, open source, and customizable mouse clicking program.
 [WEBSITE](https://mog-developing.github.io/MOG-AUTOCLICKER)
+![GitHub release)](https://img.shields.io/github/v/release/MOG-Developing/MOG-AUTOCLICKER?color=orange&label=Latest%20Release) ![License](https://img.shields.io/github/license/MOG-Developing/MOG-AUTOCLICKER) ![Stars](https://img.shields.io/github/stars/MOG-Developing/MOG-AUTOCLICKER?style=social)
 
-# TUTORIAL HOW TO RUN:
-Requirements: python 3.11 or higher (made in python 3.11 so recommended.)
+## Why you should use this AutoClicker?
+- Our AutoClicker is modern, lightweight and easy to use!
+- It's made in C++ (there is a single release made in Python).
+- It is user-friendly, easy to navigate!
+- You can use it on Windows (adding support for Linux soon!).
 
-If it still doesn't run you should open CMD (or command promt) and copy paste this ```pip install keyboard mouse pyautogui tk ttkthemes pywin32 threading time messagebox ttk tkinter```.
-This command installs all of the things needed for the autoclicker!
+ ## Made with:
+ - **Compiler:** winlibs-x86_64-posix-seh-gcc-15.2.0-mingw-w64ucrt-13.0.0-r1
+ - **Graphics:** DirectX 11 (DX11)
+ - **UI Framework:** Dear ImGui (imgui-1.92.7)
+ - **JSON Handler:** nlohmann/json
 
-- **_If you download or use this software, you automatically agree to the_ [LICENSE](https://github.com/MOG-Developing/MOG-AUTOCLICKER/blob/main/LICENSE)**
+## Current features:
+- Config saving.
+- Up to 1000CPS(you will get less).
+- Left click, Right click, Middle click.
+- Hotkey binding.
+- CPS randomization.
+- Double clicking.
+- Click limit and Time limit.
 
+## FAQ
 
-# V1
-
-![image](https://github.com/user-attachments/assets/d6ebe9e8-3fc2-442e-8e03-0e2e653762d7)  ![image](https://github.com/user-attachments/assets/c5690334-f6a4-4349-8e6a-29b452b0787a)
-
-# Library install
-![Be pavadinimo](https://github.com/user-attachments/assets/fba2ea83-6756-443d-b9e9-7fe281f90f2c)
-
-
-
-# V2 RELEASED   ![image](https://github.com/user-attachments/assets/7ac43ca3-9962-4aa5-ab17-e4c70c57cb8a)
-
-**V2** is a improved version of V1.
-## New features
-- Selecting CPS/MS
-- CPS/MS randomization
-- Left, Right, Middle click options
-- Custom hotkeys
-- Status Stopped/Turned On
-- Improved ui.
+**Is it safe?**
+Yes. It is open source, you can check the code yourself.
+*More questions and responses for your FAQ soon!*
