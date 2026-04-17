@@ -19,8 +19,8 @@
         <div class="nav-content">
             <div class="logo">MOG-AUTOCLICKER</div>
             <div class="nav-links">
-                <a href="#" class="active" data-page="home">Home</a>
-                <a href="#" data-page="download">Download</a>
+                <a href="index.html" class="active" data-page="home">Home</a>
+                <a href="download.html" data-page="download">Download</a>
             </div>
         </div>
     </nav>
@@ -32,32 +32,8 @@
                 <h1>MOG-AUTOCLICKER</h1>
                 <p class="subtitle">Built for speed, not for background noise. Take your performance to its limits. Try it now!</p>
                 <div class="cta-buttons">
-                    <button class="btn primary" onclick="navigate('download')">Download Now</button>
+                    <button class="btn primary" onclick="location.href='download.html'">Download Now</button>
                     <a href="https://github.com/MOG-Developing/MOG-AUTOCLICKER" target="_blank" class="btn secondary">View Source</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Download Page -->
-        <section class="page" id="download">
-            <div class="releases-container">
-                <div class="release-section">
-                    <div class="section-header">
-                        <div class="accent-line"></div>
-                        <h2>Latest Release</h2>
-                    </div>
-                    <div id="latest-mount">
-                        <div class="loading">Loading latest version...</div>
-                    </div>
-                </div>
-
-                <div class="release-section">
-                    <div class="section-header">
-                        <div class="accent-line dim"></div>
-                        <h3>Older versions</h3>
-                    </div>
-                    <div id="archive-mount" class="releases-list"></div>
-                    <button id="show-more" class="btn-show-more" style="display: none;">Show more</button>
                 </div>
             </div>
         </section>
