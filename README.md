@@ -29,5 +29,7 @@ MOG-AUTOCLICKER is a lightweight, fast, open source, and customizable mouse clic
 ## FAQ
 
 **Is it safe?**
+
 Yes. It is open source, you can check the code yourself.
+
 *More questions and responses for your FAQ soon!*
