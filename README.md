@@ -3,7 +3,7 @@
 MOG-AUTOCLICKER is a lightweight, fast, open source, and customizable mouse clicking program.
 [WEBSITE](https://mog-developing.github.io/MOG-AUTOCLICKER)
 
-![GitHub release)](https://img.shields.io/github/v/release/MOG-Developing/MOG-AUTOCLICKER?color=orange&label=Latest%20Release) ![License](https://img.shields.io/github/license/MOG-Developing/MOG-AUTOCLICKER) ![Stars](https://img.shields.io/github/stars/MOG-Developing/MOG-AUTOCLICKER?style=social)
+[![Downloads](https://img.shields.io/github/downloads/MOG-Developing/MOG-AUTOCLICKER/total?style=flat-square&label=Downloads&color=orange)](https://github.com/MOG-Developing/MOG-AUTOCLICKER/releases) [![Release](https://img.shields.io/github/v/tag/MOG-Developing/MOG-AUTOCLICKER?color=orange&label=Release&sort=semver&style=flat-square)](https://github.com/MOG-Developing/MOG-AUTOCLICKER/tags) [![License](https://img.shields.io/github/license/MOG-Developing/MOG-AUTOCLICKER?style=flat-square&color=orange)](https://github.com/MOG-Developing/MOG-AUTOCLICKER/blob/main/LICENSE) [![Stars](https://img.shields.io/github/stars/MOG-Developing/MOG-AUTOCLICKER?style=flat-square&color=orange)](https://github.com/MOG-Developing/MOG-AUTOCLICKER/stargazers)
 
 ## Why you should use this AutoClicker?
 - Our AutoClicker is modern, lightweight and easy to use!
